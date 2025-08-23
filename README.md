@@ -74,5 +74,5 @@ cd ..
 # Root package.json for scripts
 npm init -y
 
-## Development
+## Development 
 
