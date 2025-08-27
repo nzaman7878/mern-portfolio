@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Mern Stack Portfolio Project for mern developer",
   "main": "index.js",
-  "scripts":{
+  "scripts": {
     "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
     "server:dev": "cd server && npm run dev",
     "client:dev": "cd client && npm run dev",
