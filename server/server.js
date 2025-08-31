@@ -11,7 +11,7 @@ const logger = require('./utils/logger');
 // Import routes
 const healthRoutes = require('./routes/health');
 const authRoutes = require('./routes/auth');
-
+const projectRoutes = require('./routes/projects');
 const app = express();
 
 // Connect to MongoDB
@@ -46,6 +46,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use('/api/health', healthRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/projects', projectRoutes);
 
 // 404 handler
 app.use('/*splat', (req, res) => {
