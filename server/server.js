@@ -7,7 +7,10 @@ const morgan = require('morgan');
 const config = require('./config');
 const { connectDB } = require('./config/database');
 const logger = require('./utils/logger');
+
+// Import routes
 const healthRoutes = require('./routes/health');
+const authRoutes = require('./routes/auth');
 
 const app = express();
 
@@ -42,6 +45,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/health', healthRoutes);
+app.use('/api/auth', authRoutes);
 
 // 404 handler
 app.use('/*splat', (req, res) => {
