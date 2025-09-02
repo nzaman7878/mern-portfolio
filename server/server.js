@@ -12,6 +12,10 @@ const logger = require('./utils/logger');
 const healthRoutes = require('./routes/health');
 const authRoutes = require('./routes/auth');
 const projectRoutes = require('./routes/projects');
+const skillRoutes = require('./routes/skills');
+const timelineRoutes = require('./routes/timeline');
+const contactRoutes = require('./routes/contact');
+
 const app = express();
 
 // Connect to MongoDB
@@ -47,6 +51,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/health', healthRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
+app.use('/api/skills', skillRoutes);
+app.use('/api/timeline', timelineRoutes);
+app.use('/api/contact', contactRoutes);
 
 // 404 handler
 app.use('/*splat', (req, res) => {
