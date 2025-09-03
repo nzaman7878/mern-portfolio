@@ -1,30 +1,32 @@
+import { Routes, Route } from 'react-router-dom'
+import Layout from './components/layout/Layout'
+import ErrorBoundary from './components/common/ErrorBoundary'
 
-import './App.css'
-
-import HealthCheck from './components/HealthCheck';
+// Pages
+import Home from './pages/Home'
+import About from './pages/About'
+import Skills from './pages/Skills'
+import Projects from './pages/Projects'
+import ProjectDetail from './pages/ProjectDetail'
+import Contact from './pages/Contact'
+import NotFound from './components/common/NotFound'
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-white">
-      <div className="container mx-auto px-4 py-8">
-        <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-primary-700 mb-2">
-            MERN Portfolio
-          </h1>
-          <p className="text-gray-600">
-            Full-stack developer portfolio built with React, Node.js, Express & MongoDB
-          </p>
-        </header>
-        
-        <main className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-2xl font-semibold mb-4">System Status</h2>
-            <HealthCheck />
-          </div>
-        </main>
-      </div>
-    </div>
-  );
+    <ErrorBoundary>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:slug" element={<ProjectDetail />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Layout>
+    </ErrorBoundary>
+  )
 }
 
-export default App;
+export default App
