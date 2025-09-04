@@ -1,8 +1,21 @@
-import React from 'react'
-
-const Card = () => {
+const Card = ({ 
+  children, 
+  className = '', 
+  hover = true,
+  padding = true,
+  ...props 
+}) => {
+  const classes = [
+    'card',
+    hover ? 'hover:shadow-lg' : '',
+    padding ? '' : '!p-0',
+    className
+  ].join(' ')
+  
   return (
-    <div>Card</div>
+    <div className={classes} {...props}>
+      {children}
+    </div>
   )
 }
 
