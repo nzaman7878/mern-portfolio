@@ -1,8 +1,15 @@
-import React from 'react'
+import Header from './Header'
+import Footer from './Footer'
 
-function Layout() {
+const Layout = ({ children }) => {
   return (
-    <div>Layout</div>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-1">
+        {children}
+      </main>
+      <Footer />
+    </div>
   )
 }
 
