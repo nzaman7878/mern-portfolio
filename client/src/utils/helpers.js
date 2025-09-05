@@ -88,3 +88,59 @@ export const scrollToElement = (elementId, offset = 0) => {
     window.scrollTo({ top, behavior: 'smooth' })
   }
 }
+
+/**
+ * Get project category display name
+ * @param {string} category 
+ * @returns {string}
+ */
+export const getProjectCategoryName = (category) => {
+  const categories = {
+    web: 'Web App',
+    mobile: 'Mobile App',
+    desktop: 'Desktop App',
+    api: 'API/Backend',
+    other: 'Other'
+  }
+  return categories[category] || category
+}
+
+/**
+ * Get status color classes
+ * @param {string} status 
+ * @returns {string}
+ */
+export const getStatusColor = (status) => {
+  const colors = {
+    planning: 'bg-yellow-100 text-yellow-800',
+    'in-progress': 'bg-blue-100 text-blue-800',
+    completed: 'bg-green-100 text-green-800',
+    'on-hold': 'bg-gray-100 text-gray-800'
+  }
+  return colors[status] || colors.completed
+}
+
+/**
+ * Calculate reading time for content
+ * @param {string} content 
+ * @param {number} wordsPerMinute 
+ * @returns {number}
+ */
+export const calculateReadingTime = (content, wordsPerMinute = 200) => {
+  const words = content.split(/\s+/).length
+  return Math.ceil(words / wordsPerMinute)
+}
+
+/**
+ * Parse URL parameters
+ * @param {string} search 
+ * @returns {Object}
+ */
+export const parseUrlParams = (search) => {
+  const params = new URLSearchParams(search)
+  const result = {}
+  for (const [key, value] of params.entries()) {
+    result[key] = value
+  }
+  return result
+}

@@ -39,3 +39,18 @@ export const PROJECT_CATEGORIES = {
   api: 'API/Backend',
   other: 'Other',
 }
+
+export const PROJECT_STATUS = {
+  planning: 'Planning',
+  'in-progress': 'In Progress',
+  completed: 'Completed',
+  'on-hold': 'On Hold',
+}
+
+export const SORT_OPTIONS = [
+  { value: '-createdAt', label: 'Newest First' },
+  { value: 'createdAt', label: 'Oldest First' },
+  { value: 'title', label: 'Title A-Z' },
+  { value: '-title', label: 'Title Z-A' },
+  { value: '-views', label: 'Most Viewed' },
+]
