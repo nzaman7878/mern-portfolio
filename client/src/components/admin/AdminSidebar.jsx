@@ -3,7 +3,7 @@ import {
   LayoutDashboard, 
   FolderOpen, 
   Zap, 
-  Timeline, 
+  ChartLine,    
   MessageSquare,
   X
 } from 'lucide-react'
@@ -12,17 +12,15 @@ const AdminSidebar = ({ isOpen, onClose }) => {
   const location = useLocation()
 
   const navigation = [
-    { name: 'Dashboard', href: '/admin', icon: LayoutDashboard, exact: true },
-    { name: 'Projects', href: '/admin/projects', icon: FolderOpen },
-    { name: 'Skills', href: '/admin/skills', icon: Zap },
-    { name: 'Timeline', href: '/admin/timeline', icon: Timeline },
-    { name: 'Messages', href: '/admin/messages', icon: MessageSquare },
-  ]
+  { name: 'Dashboard', href: '/admin', icon: LayoutDashboard, exact: true },
+  { name: 'Projects',  href: '/admin/projects', icon: FolderOpen },
+  { name: 'Skills',    href: '/admin/skills', icon: Zap },
+  { name: 'Timeline',  href: '/admin/timeline', icon: ChartLine },  
+  { name: 'Messages',  href: '/admin/messages', icon: MessageSquare }
+]
 
   const isActive = (href, exact = false) => {
-    if (exact) {
-      return location.pathname === href
-    }
+    if (exact) return location.pathname === href
     return location.pathname.startsWith(href)
   }
 
@@ -46,6 +44,7 @@ const AdminSidebar = ({ isOpen, onClose }) => {
         <div className="flex items-center justify-between h-16 px-6 border-b border-gray-200">
           <h1 className="text-xl font-bold text-gray-900">Admin Panel</h1>
           <button
+            aria-label="Close sidebar"
             className="md:hidden text-gray-500 hover:text-gray-700"
             onClick={onClose}
           >
@@ -68,7 +67,7 @@ const AdminSidebar = ({ isOpen, onClose }) => {
                   className={`
                     flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors
                     ${active 
-                      ? 'bg-primary-100 text-primary-700' 
+                      ? 'bg-blue-100 text-blue-700' 
                       : 'text-gray-700 hover:bg-gray-100'
                     }
                   `}

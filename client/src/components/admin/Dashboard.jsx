@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { 
   FolderOpen, 
   Zap, 
-  Timeline, 
+  ChartLine,   
   MessageSquare,
   Plus,
   TrendingUp
@@ -63,7 +63,7 @@ const Dashboard = () => {
       title: 'Timeline',
       value: stats?.timeline?.total || 0,
       subtitle: `${stats?.timeline?.current || 0} current`,
-      icon: Timeline,
+      icon: ChartLine,   
       color: 'text-purple-600',
       bg: 'bg-purple-100',
       link: '/admin/timeline'
@@ -85,7 +85,9 @@ const Dashboard = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-          <p className="text-gray-600">Welcome back! Here's what's happening with your portfolio.</p>
+          <p className="text-gray-600">
+            Welcome back! Here's what's happening with your portfolio.
+          </p>
         </div>
         <Button
           as={Link}
@@ -124,8 +126,9 @@ const Dashboard = () => {
         })}
       </div>
 
-      {/* Quick Actions */}
+      {/* Quick Actions & Recent Activity */}
       <div className="grid md:grid-cols-2 gap-6">
+        {/* Quick Actions */}
         <Card>
           <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
           <div className="space-y-3">
@@ -159,6 +162,7 @@ const Dashboard = () => {
           </div>
         </Card>
 
+        {/* Recent Activity */}
         <Card>
           <h3 className="text-lg font-semibold mb-4">Recent Activity</h3>
           <div className="space-y-3 text-sm">

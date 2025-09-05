@@ -57,11 +57,10 @@ const initialState = {
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState)
 
-  // Check for existing token on mount
+  // Check for existing token once on mount
   useEffect(() => {
     const token = localStorage.getItem('auth_token')
     if (token) {
-      // Verify token is still valid
       authService.verifyToken()
         .then((userData) => {
           dispatch({ 
@@ -70,7 +69,6 @@ export const AuthProvider = ({ children }) => {
           })
         })
         .catch(() => {
-          // Token invalid, remove it
           localStorage.removeItem('auth_token')
           dispatch({ type: 'LOGOUT' })
         })
