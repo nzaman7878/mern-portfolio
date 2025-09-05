@@ -1,16 +1,15 @@
 import { Github, Linkedin, Twitter, Mail } from 'lucide-react'
-import { SITE_CONFIG, SOCIAL_LINKS } from '../../utils/constants'
+import { SITE_CONFIG, SOCIAL_LINKS, NAVIGATION_ITEMS } from '../../utils/constants'
+
+const socialIcons = {
+  github: Github,
+  linkedin: Linkedin,
+  twitter: Twitter,
+  email: Mail,
+}
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
-
-  const socialIcons = {
-    github: Github,
-    linkedin: Linkedin,
-    twitter: Twitter,
-    email: Mail,
-  }
-
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container-max section-padding">
@@ -22,23 +21,23 @@ const Footer = () => {
               {SITE_CONFIG.description}
             </p>
             <div className="flex space-x-4">
-              {Object.entries(SOCIAL_LINKS).map(([platform, url]) => {
-                const Icon = socialIcons[platform]
-                if (!Icon || !url) return null
-                
-                return (
-                  <a
-                    key={platform}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors"
-                    aria-label={`Visit ${platform} profile`}
-                  >
-                    <Icon className="h-5 w-5" />
-                  </a>
-                )
-              })}
+              {Object.entries(SOCIAL_LINKS)
+                .filter(([platform, url]) => !!socialIcons[platform] && !!url)
+                .map(([platform, url]) => {
+                  const Icon = socialIcons[platform]
+                  return (
+                    <a
+                      key={platform}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-white transition-colors"
+                      aria-label={`Visit ${platform} profile`}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </a>
+                  )
+                })}
             </div>
           </div>
 
@@ -46,7 +45,7 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {NAVIGATION_ITEMS.map((item) => (
+              {(NAVIGATION_ITEMS || []).map((item) => (
                 <li key={item.path}>
                   <a
                     href={item.path}
