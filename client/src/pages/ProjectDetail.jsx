@@ -1,38 +1,36 @@
 import { useParams } from 'react-router-dom'
 import SEO from '../components/ui/SEO'
+import ProjectDetail from '../components/projects/ProjectDetail'
 import useDocumentTitle from '../hooks/useDocumentTitle'
-import NotFound from '../components/common/NotFound'
+import { useProject } from '../hooks/useProjects'
 
-const ProjectDetail = () => {
+const ProjectDetailPage = () => {
   const { slug } = useParams()
-  useDocumentTitle(`Project: ${slug}`)
-
-  // Placeholder - will be replaced with API call later
-  const project = null
-
-  if (!project) {
-    return <NotFound />
-  }
+  const { project, loading, error, refetch } = useProject(slug)
+  
+  useDocumentTitle(project?.title || 'Project Detail')
 
   return (
     <>
       <SEO 
-        title={project.title} 
-        description={project.description}
+        title={project?.title}
+        description={project?.description}
+        keywords={project?.technologies?.join(', ')}
+        type="article"
       />
       
       <div className="section-padding">
         <div className="container-max">
-          <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
-            Project Detail: {slug}
-          </h1>
-          <p className="text-center text-gray-600">
-            This page will show detailed project information when connected to the API.
-          </p>
+          <ProjectDetail
+            project={project}
+            loading={loading}
+            error={error}
+            onRetry={refetch}
+          />
         </div>
       </div>
     </>
   )
 }
 
-export default ProjectDetail
+export default ProjectDetailPage
