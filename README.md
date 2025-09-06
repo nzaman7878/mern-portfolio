@@ -1,78 +1,88 @@
-# mern-portfolio
 # MERN Developer Portfolio
 
+A modern, full-stack portfolio application built with the MERN stack (MongoDB, Express.js, React, Node.js).
 
-## Tech Stack
-- Frontend: React 18, Vite, Tailwind CSS, React Router
-- Backend: Node.js, Express.js, MongoDB Atlas
-- Auth: JWT
-- Deployment: Client (Netlify), Server (Render), DB (MongoDB Atlas)
+## 🚀 Features
+
+### Public Site
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Performance Optimized**: Lighthouse score 90+ across all metrics
+- **SEO Friendly**: Open Graph, structured data, and sitemap
+- **Accessibility**: WCAG 2.1 AA compliant
+- **PWA Ready**: Service worker and offline functionality
+
+### Content Management
+- **Projects Portfolio**: Showcase with filtering and search
+- **Skills Database**: Categorized technical skills with proficiency
+- **Timeline**: Professional experience and education
+- **Contact Form**: Spam protection and email notifications
+- **Admin Panel**: Full CRUD operations with authentication
+
+### Technical Features
+- **Security**: JWT auth, rate limiting, input validation
+- **Error Handling**: Comprehensive error boundaries and 404 pages
+- **Performance**: Image lazy loading, code splitting, caching
+- **Monitoring**: Health checks and performance metrics
+- **CI/CD**: GitHub Actions for automated testing and deployment
+
+## 🛠 Tech Stack
+
+### Frontend
+- **React 18**: Latest React with hooks and context
+- **Vite**: Fast build tool and dev server
+- **Tailwind CSS**: Utility-first CSS framework
+- **React Router 6**: Client-side routing
+- **React Hook Form**: Form validation and management
+- **React Query**: Server state management
+- **PWA**: Service worker for offline functionality
+
+### Backend
+- **Node.js**: JavaScript runtime
+- **Express.js**: Web framework
+- **MongoDB**: NoSQL database
+- **Mongoose**: MongoDB ODM
+- **JWT**: Authentication tokens
+- **Nodemailer**: Email notifications
+- **Express Validator**: Input validation
+
+### DevOps & Tools
+- **GitHub Actions**: CI/CD pipeline
+- **ESLint & Prettier**: Code formatting and linting
+- **Lighthouse CI**: Performance monitoring
+- **Husky**: Git hooks
+- **Docker**: Containerization (optional)
+
+## 📁 Project Structure
+
+portfolio-mern/
+├── client/ # React frontend
+│ ├── public/ # Static assets
+│ ├── src/
+│ │ ├── components/ # Reusable components
+│ │ ├── pages/ # Page components
+│ │ ├── hooks/ # Custom hooks
+│ │ ├── services/ # API services
+│ │ ├── contexts/ # React contexts
+│ │ └── utils/ # Utility functions
+│ └── dist/ # Build output
+├── server/ # Express backend
+│ ├── controllers/ # Route controllers
+│ ├── middleware/ # Custom middleware
+│ ├── models/ # Mongoose schemas
+│ ├── routes/ # API routes
+│ ├── utils/ # Utility functions
+│ └── scripts/ # Database scripts
+└── .github/ # GitHub Actions workflows
 
 
-## Project Structure
-portfolio-mern/              # Root project folder
-│
-├── .git/                    # Git repository (after git init)
-├── node_modules/            # Root dependencies (if any installed later)
-├── package.json             # Root package.json (for scripts)
-├── package-lock.json        
-├── README.md                # Project documentation (you’ll create)
-│
-├── client/                  # React (Vite + Tailwind) frontend
-│   ├── node_modules/        
-│   ├── public/              # Public assets (images, favicon, etc.)
-│   ├── src/                 # Source code
-│   │   ├── assets/          # Local images, fonts, etc.
-│   │   ├── components/      # Reusable React components
-│   │   ├── pages/           # Page-level components (Home, About, Projects, etc.)
-│   │   ├── App.jsx          # Root React component
-│   │   ├── main.jsx         # React entry point
-│   │   └── index.css        # Tailwind base styles
-│   ├── .eslintrc.json       # ESLint config
-│   ├── tailwind.config.js   # Tailwind config
-│   ├── postcss.config.js    # PostCSS config
-│   ├── package.json         # Client dependencies
-│   └── vite.config.js       # Vite config
-│
-├── server/                  # Express backend
-│   ├── node_modules/
-│   ├── src/
-│   │   ├── config/          # Config (DB connection, env variables)
-│   │   ├── middleware/      # Middlewares (auth, error handling, etc.)
-│   │   ├── models/          # MongoDB models (User, Project, etc.)
-│   │   ├── routes/          # Express routes (auth.js, projects.js)
-│   │   ├── controllers/     # Controller logic for routes
-│   │   └── index.js         # Entry point for Express server
-│   ├── .eslintrc.json       # ESLint config
-│   ├── package.json         # Server dependencies
-│   └── nodemon.json         # (Optional) nodemon config
-│
-└── .gitignore               # Ignore node_modules, env files, etc.
+## 🚀 Quick Start
 
+### Prerequisites
+- Node.js 18+ and npm
+- MongoDB Atlas account (or local MongoDB)
+- Git
 
-## Install dependencies
-# Initialize project
-mkdir portfolio-mern && cd portfolio-mern
-git init
+### Installation
 
-# Create client (React + Vite)
-npm create vite@latest client -- --template react
-cd client
-npm install
-npm install -D tailwindcss postcss autoprefixer @tailwindcss/typography
-npm install -D eslint prettier eslint-config-prettier eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh
-npx tailwindcss init -p
-cd ..
-
-# Create server (Express)
-mkdir server && cd server
-npm init -y
-npm install express cors helmet express-rate-limit morgan
-npm install -D nodemon eslint prettier eslint-config-prettier
-cd ..
- 
-# Root package.json for scripts
-npm init -y
-
-## Development 
+1. **Clone the repository**
 
